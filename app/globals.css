@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* ── Palette: 80–90% neutral, 10–20% accent ─────────────────────── */
+  --color-ink: #111111;
+  --color-paper: #fafaf8;
+  --color-surface: #f1f1ed;
+  --color-white: #ffffff;
+  --color-muted: #5f625f;
+  --color-line: #dfe0dc;
+  --color-secondary: #8a8d88;
+  --color-terracotta: #c46a3a;
+  --color-sage: #6b7568;
+  --color-success: #4e7657;
+
+  /* ── Type ────────────────────────────────────────────────────────── */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-display: var(--font-dm-sans), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo,
+    Consolas, monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-terracotta);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 3px;
+  }
+
+  /* Respect users who prefer reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Faint technical grid used sparingly behind diagrams. */
+@utility dotted-grid {
+  background-image: radial-gradient(circle, #d9dad5 1px, transparent 1px);
+  background-size: 22px 22px;
+}
